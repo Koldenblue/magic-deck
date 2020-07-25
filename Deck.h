@@ -1,7 +1,5 @@
-#include <iostream>
 #include <string>
 using namespace std;
-// The above will also be loaded by the main magic.cpp file, so they are unnecessary
 
 typedef struct node
 {
@@ -13,55 +11,33 @@ card;
 
 class Deck
 {
-    Deck(int init_size)
-    {
-        set_deck_size(init_size);
-    }
 
 // data members are private, member functions are public
 private:
     int deck_size;
     string colors[5] = {"Swamps", "Forests", "Plains", "Mountains", "Islands"};
-
+    string deck_name;
+    card deck;
+    
+// member function prototypes are declared here, then defined in Deck.cpp
+/* reason for this: only the functions prototypes are required by the main client code -
+the client does not need to know how these functions work! So it is better to 
+encapsulate them. The client code does not actually see the function definitions.
+*/
 public:
-    int get_deck_size()
-    {
-        return deck_size;
-    }
+    // Constructor:
+    Deck(int init_size, string deck_name);
 
-    void set_deck_size(int new_size)
-    {
-        deck_size = new_size;
-    }
+    void set_deck_size(int new_size);
+    int get_deck_size();
 
-    string get_color(int color_code)
-    {
-        return colors[color_code];
-    }
+    void set_deck_name();
+    string get_deck_name();
 
-    // Create a new card node.
-    card set_card(string card_name, string card_text)
-    {
-        card *new_card = (card*) malloc(sizeof(card));
-        if (new_card == NULL)
-        {
-            cout << "Mem error!" << endl;
-            EXIT_FAILURE;
-        }
-        new_card->card_name = card_name;
-        new_card->card_text = card_text;
-        new_card->next = NULL;
-        return *new_card;
-    }
+    string get_color(int color_code);
 
-    void add_card_to_deck(card new_card)
-    {
-        ;
-    }
-
-    void free_cards(card *head)
-    {
-        ;
-    }
+    card set_card(string card_name, string card_text);
+    void add_card_to_deck(card new_card);
+    void free_cards(card *head);
 };
 
