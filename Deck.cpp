@@ -12,6 +12,7 @@ Deck::Deck(int init_size, string name)
 {
     set_deck_size(init_size);
     deck_name = name;
+
 }
 
 
@@ -35,6 +36,7 @@ string Deck::get_deck_name()
     return deck_name;
 }
 
+
 string Deck::get_color(int color_code)
 {
     return colors[color_code];
@@ -42,7 +44,7 @@ string Deck::get_color(int color_code)
 
 
 // Create a new card node.
-card Deck::set_card(string card_name, string card_text)
+card Deck::create_card(string card_name, string card_text)
 {
     card *new_card = (card*) malloc(sizeof(card));
     if (new_card == NULL)
@@ -56,11 +58,28 @@ card Deck::set_card(string card_name, string card_text)
     return *new_card;
 }
 
-
-void Deck::add_card_to_deck(card new_card)
+card Deck::create_deck()
 {
-    ;
+    card *new_deck = (card*) malloc(sizeof(card));
+    if (new_deck == NULL)
+    {
+        cout << "MEM ERROR" << endl;
+        EXIT_FAILURE;
+    }
+    new_deck->card_name = "none";
+    new_deck->card_text = "none";
+    new_deck->next = NULL;
+    return *new_deck;
 }
+
+// void Deck::add_card_to_deck(card my_card, card my_deck)
+// {
+//     if (my_deck.next == NULL)
+//     {
+//         my_deck.next = *my_card;
+//     }
+
+// }
 
 
 void Deck::free_cards(card *head)

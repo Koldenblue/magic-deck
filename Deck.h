@@ -17,8 +17,7 @@ private:
     int deck_size;
     string colors[5] = {"Swamps", "Forests", "Plains", "Mountains", "Islands"};
     string deck_name;
-    card deck;
-    
+
 // member function prototypes are declared here, then defined in Deck.cpp
 /* reason for this: only the functions prototypes are required by the main client code -
 the client does not need to know how these functions work! So it is better to 
@@ -36,8 +35,9 @@ public:
 
     string get_color(int color_code);
 
-    card set_card(string card_name, string card_text);
-    void add_card_to_deck(card new_card);
+    card create_deck();
+    card create_card(string card_name, string card_text);
+    // void add_card_to_deck(card my_card, card my_deck);
     void free_cards(card *head);
 };
 

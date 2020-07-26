@@ -20,9 +20,11 @@ int main(void)
         cout << anger.get_color(i) << endl;
     }
 
-    card my_card = anger.set_card("RAGE", "DO A MILLION DAMAGE");
+    card my_card = anger.create_card("RAGE", "DO A MILLION DAMAGE");
     cout << my_card.card_name << " has the text "<< my_card.card_text << endl;
 
-    anger.set_deck_name();
-    cout << anger.get_deck_name() << endl;
-} 
+    card burn_deck = anger.create_deck();
+    cout << burn_deck.card_name << endl;
+    // anger.add_card_to_deck(my_card, burn_deck);
+    // cout << burn_deck.card_name << endl;
+}
