@@ -20,11 +20,22 @@ int main(void)
         cout << anger.get_color(i) << endl;
     }
 
-    card my_card = anger.create_card("RAGE", "DO A MILLION DAMAGE");
-    cout << my_card.card_name << " has the text "<< my_card.card_text << endl;
+    card *my_card = anger.create_card("RAGE", "DO A MILLION DAMAGE");
+    cout << my_card->card_name << " has the text "<< my_card->card_text << endl;
+    card *my_card2 = anger.create_card("Lightning bolt", "deal 3 damage");
+    cout << my_card2->card_name << " has the text "<< my_card2->card_text << endl;
+    card *deck = anger.add_to_deck(my_card, my_card2);
+    
+    // Lightning bolt (card2) is the new head
+    cout << deck->next->card_name << endl;
+    cout << deck->card_name << endl;
 
-    card burn_deck = anger.create_deck();
-    cout << burn_deck.card_name << endl;
+    // card *burn_deck = anger.create_deck();
+    // cout << burn_deck->card_name << endl;
     // anger.add_card_to_deck(my_card, burn_deck);
     // cout << burn_deck.card_name << endl;
+
+
+    anger.free_cards(my_card);
+    // anger.free_cards(burn_deck);
 }

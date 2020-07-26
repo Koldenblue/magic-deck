@@ -30,14 +30,16 @@ public:
     void set_deck_size(int new_size);
     int get_deck_size();
 
-    void set_deck_name();
+    string set_deck_name();
     string get_deck_name();
 
     string get_color(int color_code);
 
-    card create_deck();
-    card create_card(string card_name, string card_text);
+    card* create_deck();
+    card* create_card(string card_name, string card_text);
     // void add_card_to_deck(card my_card, card my_deck);
+    
+    card* add_to_deck(card *head, card *my_card);
     void free_cards(card *head);
 };
 
